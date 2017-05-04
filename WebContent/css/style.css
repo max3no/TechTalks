@@ -1,0 +1,46 @@
+/* CSS Document */
+body,p{
+margin:0;
+padding:0;
+}
+body{background:#F7F7F7;}
+img{border:0; float:left;}
+.flt{float:left;}
+.flr{float:right;}
+.clr{clear:left;}
+.ds{display:inline;}
+
+#main_block{width:1000px;margin:auto;}
+#top_block{ width:1000px; float:left; background:url(../images/tile.gif) repeat-x; padding-bottom:10px;}
+#sub_block{width:1000px;margin:auto;}
+#content_block{ width:900px; margin-left:50px; display:inline; float:left;}
+#center_block{ width:615px; float:left;}
+#right_block{ width:284px; float:left; border-left:1px solid #D1D1D1; padding-bottom:20px;} 
+#sub_block2{width:1000px;margin:auto;}
+#footer_block{ width:1000px; background:#434343; float:left; padding-bottom:20px;}
+
+/*top*/
+.navi{ width:395px; float:left; margin-top:-200px; position:relative;}
+.navi_tx{ font:bold 15px Trebuchet MS; color:#fff; text-decoration: none; padding:0 16px;}
+.navi2{ width:130px; float:right; margin:-200px 0 3px 0; position:relative;}
+.hd{ color:#444241; font:bold 28px Georgia; float:left; margin:-200px 0 0 80px; width:100px;}
+.spn{ width:500px; margin:-35px 0 0 40px;font:12px Georgia; float:left; color:#fff;} 
+.get{ background:url(../images/get.gif) no-repeat; width:227px; height:152px; float:left; margin:0 0 0 155px;}
+.clk{ color:#FF6702;float:left;font: bold 12px Georgia; margin:120px 0 0 30px;}
+
+/*content*/
+.titl{ color:#BE8401; font: bold italic 22px Georgia; float:left; margin:20px 400px 0 0;}
+.txt{ color:#272727; font:12px/18px Georgia; float:left; margin:10px 0 0 0; width:595px;}
+.modl{ width:594px; background:url(../images/c_tile.gif) repeat-x; border-left:1px solid #D4D5D5;border-right:1px solid #D4D5D5; float:left; padding-bottom:10px;}
+.vw{ color:#6C6C6C;font:12px/18px Georgia;margin:20px 0 0 300px; float:left;}
+
+
+/*right*/
+.titl2{ color:#00779C;font: bold italic 22px Georgia;float:left; margin:20px 0 0 20px;}
+.dat{ background:url(../images/blt_dat.gif) no-repeat left; padding-left:20px;color:#272727; font:11px tahoma; float:left; text-decoration:underline; margin:10px 0 0 20px; width:200px;}
+.txt_rt{ color:#272727; font:12px/18px Georgia; float:left; margin:10px 0 0 20px; width:250px; text-decoration:underline;}
+.addr{ width:274px; margin:10px 0 0 10px; float:left;border-top:1px solid #D1D1D1;}
+
+/*footer*/
+.navi_f{ width:700px; margin:20px 0 0 200px; float:left;}
+.lnk{ color:#fff; font:12px/18px Georgia; text-decoration:none; padding:5px 10px; float:left;}
