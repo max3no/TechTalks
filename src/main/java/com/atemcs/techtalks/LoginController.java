@@ -55,6 +55,7 @@ public class LoginController extends HttpServlet {
 				{
 					HttpSession session = request.getSession();
 					session.setAttribute("authadmin", email);
+					
 					Connection con = SqlConnect.getSqlConnection();
 					
 					RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
