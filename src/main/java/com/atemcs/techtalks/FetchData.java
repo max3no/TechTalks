@@ -9,6 +9,63 @@ import java.util.ArrayList;
 
 public class FetchData {
 	
+	public static boolean userExists(int empid)
+	{
+		boolean valid=true;
+		Connection con = SqlConnect.getSqlConnection();
+		try {
+			PreparedStatement ps = con.prepareStatement("SELECT empid FROM techtonics.users where empid=?");
+			ps.setInt(1, empid);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next())
+			{
+				valid = false;
+			}
+			return valid;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return valid;
+	}
+	
+	public static int Signup(int empid,String name,String password,String email)
+	{
+		Connection con = SqlConnect.getSqlConnection();
+		if(userExists(empid))
+		{
+			try {
+				PreparedStatement ps = con.prepareStatement("INSERT INTO `techtonics`.`users` (`empid`, `name`, `password`, `email`, `isAdmin`) VALUES (?, ?, ?, ?, 'no')");
+				ps.setInt(1, empid);
+				ps.setString(2, name);
+				ps.setString(3, password);
+				ps.setString(4, email);
+				int update = ps.executeUpdate();
+				if(update>0)
+				{
+					return 1;
+				}
+				else
+				{
+					return 0;
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		else
+		{
+			return 3;
+		}
+			
+		return 0;
+		
+	}
+	
+	
 	
 	public static ArrayList<techtalks> FetchRequestedTalks()
 	{
