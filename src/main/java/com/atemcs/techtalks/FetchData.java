@@ -10,6 +10,31 @@ import java.util.ArrayList;
 public class FetchData {
 	
 	
+	
+	public static ArrayList<techtalks> fetchUpdate(int id){
+		
+		Connection con = SqlConnect.getSqlConnection();
+		ArrayList<techtalks> list = new ArrayList<>();
+		try {
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM techtonics.techtalks where techtalksid=?");
+			ps.setInt(1, id);
+			ResultSet rs  = ps.executeQuery();
+			while(rs.next())
+			{
+				list.add(new techtalks(rs.getInt("techtalksid"),rs.getString("presenteeName"),rs.getString("topic"),rs.getString("location"),rs.getString("when")));
+				
+			}
+			return list;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
+		
+		
+	}
+	
 	public static int deleteTalk(int id){
 		
 		Connection con = SqlConnect.getSqlConnection();
@@ -126,6 +151,9 @@ public class FetchData {
 		}
 		return 0;
 	}
+	
+	
+	
 	public static boolean checkAttendee(int empid,int techtalkid)
 	{
 		Connection con = SqlConnect.getSqlConnection();

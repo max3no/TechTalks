@@ -47,6 +47,11 @@ public class techtalks {
 	public void setWhen(String when) {
 		this.when = when;
 	}
+	@Override
+	public String toString() {
+		return "techtalks [techtalksid=" + techtalksid + ", presenteeName=" + presenteeName + ", topic=" + topic
+				+ ", location=" + location + ", when=" + when + "]";
+	}
 	
 	
 

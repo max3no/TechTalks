@@ -2,6 +2,7 @@ package com.atemcs.techtalks;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -74,8 +75,11 @@ public class AdminController extends HttpServlet {
 		}
 		else
 		{
-			
-			
+				ArrayList<techtalks> list = FetchData.fetchUpdate(idtech);
+				request.setAttribute("data", list);
+				RequestDispatcher rd = request.getRequestDispatcher("update.jsp");
+				rd.include(request, response);
+				
 		}
 	
 	}
