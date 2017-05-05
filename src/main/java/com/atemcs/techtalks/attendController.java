@@ -1,9 +1,11 @@
 package com.atemcs.techtalks;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Collections;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,7 +42,6 @@ public class attendController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<String> params = Collections.list(request.getParameterNames());//Get param name
-		System.out.println("here");
 		String techId=null;
 		for (String p: params)
 		{
@@ -53,17 +54,36 @@ public class attendController extends HttpServlet {
 		int techTalkId = Integer.parseInt(techIdConcat);
 		System.out.println(empId+" "+techTalkId);
 		int attendCode = FetchData.attendTalk(empId, techTalkId);
+		PrintWriter ps = response.getWriter();
 		if(attendCode == 1)
 		{
-			System.out.println("You are now attending");
+			ps.println("<script type=\"text/javascript\">");
+			  ps.println("alert('You are attending now!!!');");
+			   ps.println("location='welcome.jsp';");
+			   ps.println("</script>");
+			RequestDispatcher rd = request.getRequestDispatcher("welcome.jsp");
+			rd.include(request, response);
+	
+		
 		}
 		else if(attendCode == 3)
 		{
-			System.out.println("Already attending");
+			ps.println("<script type=\"text/javascript\">");
+			  ps.println("alert('You are already attending this!!!');");
+			   ps.println("location='welcome.jsp';");
+			   ps.println("</script>");
+			RequestDispatcher rd = request.getRequestDispatcher("welcome.jsp");
+			rd.include(request, response);
 		}
 		else
 		{
-			System.out.println("Some error occured try again later or contact admin team");
+
+			ps.println("<script type=\"text/javascript\">");
+			  ps.println("alert('Some error occured please try again later!!!');");
+			   ps.println("location='welcome.jsp';");
+			   ps.println("</script>");
+			RequestDispatcher rd = request.getRequestDispatcher("welcome.jsp");
+			rd.include(request, response);
 		}
 	}
 

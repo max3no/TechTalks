@@ -10,6 +10,31 @@ import java.util.ArrayList;
 public class FetchData {
 	
 	
+	public static int deleteTalk(int id){
+		
+		Connection con = SqlConnect.getSqlConnection();
+		PreparedStatement ps;
+		try {
+			ps = con.prepareStatement("DELETE FROM `techtonics`.`techtalks` WHERE `techtalksid`=?");
+			ps.setInt(1, id);
+			int del =  ps.executeUpdate();
+			if(del > 0)
+			{
+				return 1;
+			}
+			else
+			{
+				return 0;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return 0;
+	}
+	
 	public static String getUserName(String email){
 		
 		Connection con = SqlConnect.getSqlConnection();

@@ -54,6 +54,7 @@ else
       </div>
     </div>
     <div id="site_content">
+    <form action="attend" method ="post">
 	<table border="1" align="center">
     <tr>
     <th>Presentee</th>
@@ -95,7 +96,8 @@ else
 		<% 
 	}
     %>
-      </table>       
+      </table>  
+      </form>     
       </div>
       
     </div>
