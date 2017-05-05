@@ -82,7 +82,25 @@ public class RequestedController extends HttpServlet {
 		}
 		else
 		{
-			
+			boolean delete = FetchData.DeleteRequestedTalks(reqid);
+			if(delete)
+			{
+				ps.println("<script type=\"text/javascript\">");
+				  ps.println("alert('Deleted Request !!!');");
+				   ps.println("location='requested.jsp';");
+				   ps.println("</script>");
+				RequestDispatcher rd = request.getRequestDispatcher("requested.jsp");
+				rd.include(request, response);
+			}
+			else
+			{
+				ps.println("<script type=\"text/javascript\">");
+				  ps.println("alert('Unable to Delete request !!!');");
+				   ps.println("location='requested.jsp';");
+				   ps.println("</script>");
+				RequestDispatcher rd = request.getRequestDispatcher("requested.jsp");
+				rd.include(request, response);
+			}
 		}
 	}
 

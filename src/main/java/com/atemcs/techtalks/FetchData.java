@@ -10,6 +10,32 @@ import java.util.ArrayList;
 public class FetchData {
 	
 	
+	public static boolean DeleteRequestedTalks(int id)
+	{
+		boolean result = false;
+		int del = 0;
+		Connection con = SqlConnect.getSqlConnection();
+		try {
+
+			PreparedStatement ps = con.prepareStatement("DELETE FROM `techtonics`.`requests` WHERE `requestid`=?");
+			ps.setInt(1, id);
+			del = ps.executeUpdate();
+			if(del > 0)
+			{
+				return true;
+			}
+			else
+			{
+				return false; //deletion problem
+			}
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
 	public static int ApproveRequestedTalks(int id)
 	{
 		Connection con = SqlConnect.getSqlConnection();
