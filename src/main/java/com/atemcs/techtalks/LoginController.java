@@ -65,7 +65,7 @@ public class LoginController extends HttpServlet {
 				{
 					HttpSession session = request.getSession();
 					session.setAttribute("authuser", email);
-					RequestDispatcher rd = request.getRequestDispatcher("welcome2.jsp");
+					RequestDispatcher rd = request.getRequestDispatcher("welcome.jsp");
 					rd.include(request, response);
 				}
 				

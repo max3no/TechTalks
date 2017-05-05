@@ -30,8 +30,13 @@ public class LogoutController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
+		HttpSession session = request.getSession();
+		session.invalidate();
+		PrintWriter out = response.getWriter();
+		out.println("Logged out...");
+		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+		rd.include(request, response);	
+		
 	}
 
 	/**
@@ -45,6 +50,8 @@ public class LogoutController extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.println("Logged out...");
 		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-		rd.include(request, response);	}
+		rd.include(request, response);	
+	}
+	
 
 }
