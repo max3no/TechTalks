@@ -10,6 +10,56 @@ import java.util.ArrayList;
 public class FetchData {
 	
 	
+	public static ArrayList<techtalks> FetchRequestedTalks()
+	{
+		ArrayList<techtalks> list  = new ArrayList<>();
+		Connection con = SqlConnect.getSqlConnection();
+		try {
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM techtonics.requests");
+			ResultSet rs = ps.executeQuery();
+			while(rs.next())
+			{
+				list.add(new techtalks(0,rs.getString("presentee"),rs.getString("topic"),rs.getString("location"),rs.getString("when")));
+			}
+			return list;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
+		
+	}
+	
+	public static int UpdateTech(int id,String presenteename,String topic,String location,String when){
+		
+		
+		//SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+		Connection con = SqlConnect.getSqlConnection();
+		try {
+			//Date date = (Date) format.parse(when);
+			PreparedStatement ps = con.prepareStatement("UPDATE `techtonics`.`techtalks` SET `presenteeName`=?, `topic`=?, `location`=?, `when`=? WHERE `techtalksid`=?");
+			ps.setString(1, presenteename);
+			ps.setString(2, topic);
+			ps.setString(3, location);
+			ps.setString(4, when);
+			ps.setInt(5, id);
+			int update = ps.executeUpdate();
+			if(update>0)
+			{
+				return 1;
+			}
+			
+			else
+			{
+				return 0;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return 0;
+	}
 	
 	public static ArrayList<techtalks> fetchUpdate(int id){
 		

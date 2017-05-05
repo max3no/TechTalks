@@ -47,7 +47,7 @@ else
         <ul id="menu">
           <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
           <li class="selected"><a href="admin.jsp">Home</a></li>
-          <li><a href="<%=request.getContextPath()%>/requested.jsp">Requested TechTalks</a></li>
+          <li><a href="<%=request.getContextPath()%>/request.jsp">Requested TechTalks</a></li>
           <li><a href="another_page.html">Setting</a></li>
           <li><a href="<%=request.getContextPath()%>/logout">Logout</a></li>
         </ul>
@@ -65,10 +65,13 @@ else
     <th>Update</th>
     </tr>
     <%
-    ArrayList<techtalks> list = FetchData.getTalks();
+    ArrayList<techtalks> list = FetchData.FetchRequestedTalks();
 	for(techtalks t:list)
 	{
+		
 		%>
+		
+		
 		<tr><td>
 		<%
 		
@@ -91,11 +94,11 @@ else
 		%> 
 		</td><td>
 		<%
-		out.println("<input type='submit' value='Delete - TT"+t.getTechtalksid()+"' name="+t.getTechtalksid()+">");
+		out.println("<input type='submit' value='Approve - TT"+t.getTechtalksid()+"' name="+t.getTechtalksid()+">");
 		%>
 		</td><td>
 		<%
-		out.println("<input type='submit' value='Update - TT"+t.getTechtalksid()+"' name="+t.getTechtalksid()+">");
+		out.println("<input type='submit' value='Decline - TT"+t.getTechtalksid()+"' name="+t.getTechtalksid()+">");
 
 		%>
 		</td></tr>

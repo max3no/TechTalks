@@ -12,16 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class requestController
+ * Servlet implementation class updateController
  */
-@WebServlet("/request")
-public class requestController extends HttpServlet {
+@WebServlet("/update")
+public class updateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public requestController() {
+    public updateController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,45 +30,45 @@ public class requestController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
+		String presenteename = request.getParameter("presenteename");
 		String topic = request.getParameter("topic");
 		String location = request.getParameter("location");
-		
-		HttpSession session = request.getSession();
-		String email = (String)session.getAttribute("authuser");
-		int empid = FetchData.getUserId(email);
-		String empname = FetchData.getUserName(email);
+		HttpSession ses = request.getSession();
+		String id = (String)ses.getAttribute("updateid");
 		String when = request.getParameter("when");
-		int reqTalk = RequestTalk.makeRequest(empid,empname,topic,location,when);
-		PrintWriter ps  = response.getWriter();
-		if(reqTalk == 1)
+		//String id = (String)request.getAttribute("updateid");
+		System.out.println(id);
+		int upId = Integer.parseInt(id);
+		int update = FetchData.UpdateTech(upId, presenteename, topic, location, when);
+		PrintWriter ps = response.getWriter();
+		if(update == 1)
 		{
 			ps.println("<script type=\"text/javascript\">");
-			  ps.println("alert('Successfully Requested');");
-			   ps.println("location='request.jsp';");
-			   ps.println("</script>");
-			RequestDispatcher rd = request.getRequestDispatcher("request.jsp");
+			ps.println("alert('Talk Updated');");
+			ps.println("location='admin.jsp';");
+			ps.println("</script>");
+			RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
 			rd.include(request, response);
 		}
 		else
 		{
-
 			ps.println("<script type=\"text/javascript\">");
-			  ps.println("alert('Some error occured please try again later!!!');");
-			   ps.println("location='request.jsp';");
-			   ps.println("</script>");
-			RequestDispatcher rd = request.getRequestDispatcher("request.jsp");
+			ps.println("alert('Some error occured please try later...!!!');");
+			ps.println("location='admin.jsp';");
+			ps.println("</script>");
+			RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
 			rd.include(request, response);
 		}
 		
+		
+	
 	}
 
 }

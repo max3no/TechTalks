@@ -1,3 +1,4 @@
+
 <%@page import="com.atemcs.techtalks.techtalks"%>
 <%@page import="com.atemcs.techtalks.users"%>
 <%@page import="com.atemcs.techtalks.FetchData"%>
@@ -46,7 +47,8 @@ else
       <div id="menubar">
         <ul id="menu">
           <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-          <li class="selected"><a href="welcome.jspl">Home</a></li>
+          <li class="selected">
+          <a href="<%=request.getContextPath()%>/admin.jsp">Home</a></li>
           <li><a href="<%=request.getContextPath()%>/request.jsp">Requested TechTalks</a></li>
           <li><a href="another_page.html">Setting</a></li>
           <li><a href="<%=request.getContextPath()%>/logout">Logout</a></li>
@@ -54,20 +56,47 @@ else
       </div>
     </div>
     <div id="site_content">
-    <form action="modify" method="post">
+    <form action="update" method="post">
     <%
     ArrayList<techtalks> list = (ArrayList<techtalks>)request.getAttribute("data");
-        		  for(techtalks t:list)
-        		  {
-        			  out.print(t.getTechtalksid());
-        			  out.print(t.getPresenteeName());
-        			  out.print(t.getTopic());
-        			  out.print(t.getLocation());
-        			  out.print(t.getWhen());
-        			  
-        		  }
-    
     %>
+    <table align="center"><tr>
+    <th>Presentee</th>
+    <th>Topic</th>
+    <th>Location</th>
+    <th>When</th></tr>
+    <%
+        		  
+    for(techtalks t:list)
+    {
+    	%>
+    	<tr>
+    	<td>
+    	<input type="text" name="presenteename" value="<%out.print(t.getPresenteeName());%>"></td>
+    	
+    	<td>
+		<textarea rows="4" cols="50" name="topic" required><%out.print(t.getTopic()); %></textarea>
+		</td>
+    	
+    	<td>
+    	<select name="location">
+  		<option value="American Eagle">American Eagle</option>
+  		<option value="Training Room">Training Room</option>
+  		<option value="Conference Room">Conference Room</option>
+  		
+		</select>
+    	</td>
+    	<td>
+       	<input type="date" name="when" value="<%out.print(t.getWhen());%>"></td></tr>
+    <%
+    }
+    %>
+    <tr>
+    <td colspan="4">
+    <input type="submit" name="update" value="Update">
+    </td>
+    </tr>
+    </table>
     
 	      </form>     
       </div>

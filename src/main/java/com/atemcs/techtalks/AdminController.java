@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class AdminController
@@ -49,6 +50,9 @@ public class AdminController extends HttpServlet {
 		}
 		String option = techId.substring(0,6);
 		String id  = techId.substring(11);
+		HttpSession ses = request.getSession();
+		ses.setAttribute("updateid", id);
+		//request.setAttribute("updateid", id);
 		int idtech = Integer.parseInt(id);
 		PrintWriter ps = response.getWriter();
 		if(option.equals("Delete"))

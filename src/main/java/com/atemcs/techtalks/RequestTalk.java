@@ -6,15 +6,16 @@ import java.sql.SQLException;
 
 public class RequestTalk {
 	
-	static int makeRequest(int empid,String empname,String topic,String location){
+	static int makeRequest(int empid,String empname,String topic,String location,String when){
 		
 		Connection con = SqlConnect.getSqlConnection();
 		try {
-			PreparedStatement ps = con.prepareStatement("INSERT INTO `techtonics`.`requests` (`presentee`, `topic`, `location`, `empid`) VALUES (?, ?, ?, ?)");
+			PreparedStatement ps = con.prepareStatement("INSERT INTO `techtonics`.`requests` (`presentee`, `topic`, `location`, `empid`, `when`) VALUES (?, ?, ?, ?, ?)");
 			ps.setString(1, empname);
 			ps.setString(2, topic);
 			ps.setString(3, location);
 			ps.setInt(4, empid);
+			ps.setString(5, when);
 			int request = ps.executeUpdate();
 			if(request > 0)
 			{
