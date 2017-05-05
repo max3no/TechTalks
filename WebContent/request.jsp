@@ -5,7 +5,6 @@
 <%@ page import="java.util.*" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -54,48 +53,59 @@ else
       </div>
     </div>
     <div id="site_content">
-	<table border="1" align="center">
-    <tr>
-    <th>Presentee</th>
-    <th>Topic</th>
-    <th>When</th>
-    <th>Location</th>
-    <th>Attend</th>
-    </tr>
-    <%
-    ArrayList<techtalks> list = FetchData.getTalks();
-	for(techtalks t:list)
-	{
-		%>
-		<tr><td>
-		<%
-		
-		out.println(t.getPresenteeName());
-		%>
-		</td><td>
-		<%
-		
-		out.println(t.getTopic());
-		%> 
-		</td><td>
-		
-		<%
-		out.println(t.getWhen());
-		
-		%> 
-		</td><td>
-		<%
-		out.println(t.getLocation());
-		%> 
-		</td><td>
-		<%
-		out.println("<input type='submit' value='Attend - TT"+t.getTechtalksid()+"' name="+t.getTechtalksid()+">");
-		%>
-		</td></tr>
-		<% 
-	}
-    %>
-      </table>       
+	
+	<form action="request" method="post">
+	<table align="center">
+	<tr>
+	<th>Employee ID:</th>
+	<td><input type="text" name="empid" value="<%
+	String emailId = (String)session1.getAttribute("authuser");
+	int id = FetchData.getUserId(emailId);
+	out.print(id);
+	
+	%>" disabled></td>
+	</tr>
+	<tr>
+	<th>Name:</th>
+	<td><input type="text" name="empname" value="<%
+			
+			String email = (String)session1.getAttribute("authuser");
+			String name = FetchData.getUserName(email);
+			out.print(name);
+	
+	%>" disabled></td>
+	</tr>
+	<tr>
+	<th>Topic:</th>
+	<td>
+	<textarea rows="4" cols="50" name="topic" required>
+	
+	</textarea>
+	
+	</td>
+	</tr>
+	<tr>
+	<th>Location:</th>
+	<td>
+	
+	<select name="location">
+  		<option value="American Eagle">American Eagle</option>
+  		<option value="Training Room">Training Room</option>
+  		<option value="Conference Room">Conference Room</option>
+  		
+	</select>
+	</td>
+	</tr>
+	<tr>
+	<td colspan=2>
+	<input type="submit" name="request" value="Request Now!!!">
+	</td>
+	</tr>
+	
+	</table>
+	
+	</form>
+	       
       </div>
       
     </div>
