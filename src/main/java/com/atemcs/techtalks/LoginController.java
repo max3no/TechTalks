@@ -71,7 +71,10 @@ public class LoginController extends HttpServlet {
 			}
 			else
 			{
-				out.println("Wrong Email or Password");
+				out.println("<script type=\"text/javascript\">");
+				  out.println("alert('Wrong email or Password');");
+				   out.println("location='index.jsp';");
+				   out.println("</script>");
 				RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 				rd.include(request, response);
 			}

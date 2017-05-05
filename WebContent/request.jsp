@@ -22,7 +22,10 @@
 HttpSession session1 = request.getSession();
 if(session1.getAttribute("authuser") == null)
 {
-	out.println("Login first");
+	out.println("<script type=\"text/javascript\">");
+	  out.println("alert('Login First');");
+	   out.println("location='index.jsp';");
+	   out.println("</script>");
 	RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 	rd.include(request, response);
 }
@@ -55,6 +58,7 @@ else
     <div id="site_content">
 	
 	<form action="request" method="post">
+	<h1>Tech-Talks</h1>
 	<table style="margin: 0 auto;width:250px">
 	<tr>
 	<th>Employee ID:</th>

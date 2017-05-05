@@ -33,7 +33,10 @@ public class LogoutController extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		PrintWriter out = response.getWriter();
-		out.println("Logged out...");
+		out.println("<script type=\"text/javascript\">");
+		  out.println("alert('Logged out');");
+		   out.println("location='index.jsp';");
+		   out.println("</script>");
 		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 		rd.include(request, response);	
 		
@@ -44,13 +47,17 @@ public class LogoutController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		HttpSession session = request.getSession();
-		session.invalidate();
-		PrintWriter out = response.getWriter();
-		out.println("Logged out...");
-		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-		rd.include(request, response);	
+//		
+//		HttpSession session = request.getSession();
+//		session.invalidate();
+//		PrintWriter out = response.getWriter();
+//
+//		out.println("<script type=\"text/javascript\">");
+//		  out.println("alert('Logged out');");
+//		   out.println("location='index.jsp';");
+//		   out.println("</script>");
+//		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+//		rd.include(request, response);	
 	}
 	
 
