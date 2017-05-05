@@ -45,7 +45,7 @@ else
       <div id="menubar">
         <ul id="menu">
           <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-          <li class="selected"><a href="index.html">Home</a></li>
+          <li class="selected"><a href="welcome.jsp">Home</a></li>
           <li><a href="<%=request.getContextPath()%>/request.jsp">Request for TechTalk</a></li>
           <li><a href="another_page.html">Setting</a></li>
           <li><a href="<%=request.getContextPath()%>/logout">Logout</a></li>
@@ -78,9 +78,7 @@ else
 	<tr>
 	<th>Topic:</th>
 	<td>
-	<textarea rows="4" cols="50" name="topic" required>
-	
-	</textarea>
+	<textarea rows="4" cols="50" name="topic" required></textarea>
 	
 	</td>
 	</tr>

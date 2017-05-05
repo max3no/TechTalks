@@ -46,7 +46,7 @@ else
       <div id="menubar">
         <ul id="menu">
           <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-          <li class="selected"><a href="index.html">Home</a></li>
+          <li class="selected"><a href="welcome.jspl">Home</a></li>
           <li><a href="<%=request.getContextPath()%>/request.jsp">Request for TechTalk</a></li>
           <li><a href="another_page.html">Setting</a></li>
           <li><a href="<%=request.getContextPath()%>/logout">Logout</a></li>
