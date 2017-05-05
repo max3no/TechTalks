@@ -9,7 +9,26 @@ import java.util.ArrayList;
 
 public class FetchData {
 	
-	
+	public static String getPassword(String email){
+		
+		String password="Invalid emailID";
+		Connection con = SqlConnect.getSqlConnection();
+		try {
+			PreparedStatement ps = con.prepareStatement("SELECT password FROM techtonics.users where email=?");
+			ps.setString(1, email);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next())
+			{
+				password = rs.getString("password");
+			}
+			return password;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 	public static boolean DeleteRequestedTalks(int id)
 	{
 		boolean result = false;
