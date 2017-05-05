@@ -9,6 +9,56 @@ import java.util.ArrayList;
 
 public class FetchData {
 	
+	
+	public static int ApproveRequestedTalks(int id)
+	{
+		Connection con = SqlConnect.getSqlConnection();
+		int result = 0;
+		int del = 0;
+		try {
+			PreparedStatement ps = con.prepareStatement("SELECT * FROM techtonics.requests where requestid=?");
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			techtalks t = new techtalks();
+			while(rs.next())
+			{
+				t.setPresenteeName(rs.getString("presentee"));
+				t.setTopic(rs.getString("topic"));
+				t.setLocation(rs.getString("location"));
+				t.setWhen(rs.getString("when"));
+			}
+			PreparedStatement ps1 = con.prepareStatement("INSERT INTO `techtonics`.`techtalks` (`presenteeName`, `topic`, `location`, `when`) VALUES (?, ?, ?, ?)");
+			ps1.setString(1, t.getPresenteeName());
+			ps1.setString(2, t.getTopic());
+			ps1.setString(3, t.getLocation());
+			ps1.setString(4, t.getWhen());
+			result = ps1.executeUpdate();
+			if(result > 0)
+			{
+				PreparedStatement ps2 = con.prepareStatement("DELETE FROM `techtonics`.`requests` WHERE `requestid`=?");
+				ps2.setInt(1, id);
+				del = ps2.executeUpdate();
+				if(del > 0)
+				{
+					return 1;
+				}
+				else
+				{
+					return 2; //deletion problem
+				}
+				
+			}
+			else
+			{
+				return 0;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
 	public static boolean userExists(int empid)
 	{
 		boolean valid=true;
@@ -76,7 +126,7 @@ public class FetchData {
 			ResultSet rs = ps.executeQuery();
 			while(rs.next())
 			{
-				list.add(new techtalks(0,rs.getString("presentee"),rs.getString("topic"),rs.getString("location"),rs.getString("when")));
+				list.add(new techtalks(rs.getInt("requestid"),rs.getString("presentee"),rs.getString("topic"),rs.getString("location"),rs.getString("when")));
 			}
 			return list;
 		} catch (SQLException e) {

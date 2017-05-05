@@ -39,7 +39,7 @@ else
       <div id="logo">
         <div id="logo_text">
           <!-- class="logo_colour", allows you to change the colour of the text -->
-          <h1><a href="/index.jsp">ATMECS<span class="logo_colour">...</span></a></h1>
+          <h1><a href="#">ATMECS<span class="logo_colour">...</span></a></h1>
           <h2>Passionate minds.</h2>	
         </div>
       </div>
@@ -54,8 +54,8 @@ else
       </div>
     </div>
     <div id="site_content">
-    <form action="attend" method ="post">
-	<table border="1" align="center">
+    <form action="attend" method ="post" style="margin: 0 auto;width:250px">
+	<table border="1" style="margin: 0 auto;width:250px">
     <tr>
     <th>Presentee</th>
     <th>Topic</th>

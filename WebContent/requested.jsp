@@ -39,7 +39,7 @@ else
       <div id="logo">
         <div id="logo_text">
           <!-- class="logo_colour", allows you to change the colour of the text -->
-          <h1><a href="/index.jsp">ATMECS<span class="logo_colour">...</span></a></h1>
+          <h1><a href="#">ATMECS<span class="logo_colour">...</span></a></h1>
           <h2>Passionate minds.</h2>	
         </div>
       </div>
@@ -47,22 +47,23 @@ else
         <ul id="menu">
           <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
           <li class="selected"><a href="admin.jsp">Home</a></li>
-          <li><a href="<%=request.getContextPath()%>/request.jsp">Requested TechTalks</a></li>
+          <li><a href="<%=request.getContextPath()%>/requested.jsp">Requested TechTalks</a></li>
           <li><a href="another_page.html">Setting</a></li>
           <li><a href="<%=request.getContextPath()%>/logout">Logout</a></li>
         </ul>
       </div>
     </div>
     <div id="site_content">
-    <form action="modify" method="post">
-	<table border="1" align="center">
+    <form action="Requested" method="post">
+	<table border="1" style="margin: 0 auto;width:250px">
     <tr>
+    
     <th>Presentee</th>
     <th>Topic</th>
     <th>When</th>
     <th>Location</th>
-    <th>Delete</th>
     <th>Update</th>
+    <th>Delete</th>
     </tr>
     <%
     ArrayList<techtalks> list = FetchData.FetchRequestedTalks();

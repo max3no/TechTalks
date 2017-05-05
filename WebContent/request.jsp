@@ -38,7 +38,7 @@ else
       <div id="logo">
         <div id="logo_text">
           <!-- class="logo_colour", allows you to change the colour of the text -->
-          <h1><a href="/index.jsp">ATMECS<span class="logo_colour">...</span></a></h1>
+          <h1><a href="#">ATMECS<span class="logo_colour">...</span></a></h1>
           <h2>Passionate minds.</h2>	
         </div>
       </div>
@@ -55,7 +55,7 @@ else
     <div id="site_content">
 	
 	<form action="request" method="post">
-	<table align="center">
+	<table style="margin: 0 auto;width:250px">
 	<tr>
 	<th>Employee ID:</th>
 	<td><input type="text" name="empid" value="<%
@@ -95,8 +95,11 @@ else
 	</td>
 	</tr>
 	<tr>
+	<th>
+	When
+	</th>
 	<td>
-	<input type="text" name = "when" >
+	<input type="date" name = "when" >
 	</td>
 	</tr>
 	<tr>
